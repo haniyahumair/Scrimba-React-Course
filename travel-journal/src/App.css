@@ -1,0 +1,108 @@
+body{
+  margin: 0;
+  padding: 0;
+  max-width: 550px;
+  font-family: Inter;
+}
+
+/*Header*/
+header{
+  background-color: #F55A5A;
+  font-family: "Inter", sans-serif;
+  width: 550px;
+}
+
+nav{
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+}
+
+/*Logo styling*/
+.world-logo{
+  width: 25px;
+}
+
+span{
+  color: white;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/*Japan Entry*/
+main{
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  align-items: center;
+}
+
+.entry{
+  display: flex;
+  flex-direction: row;
+  width: 470px;
+  height: 168px;
+}
+
+main .japan-img{
+  width: 125px;
+  height: 168px;
+  border-radius: 12px;
+}
+
+.japan-info{
+  padding-left: 18px;
+  height: 168px;
+}
+
+.location-info{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  margin-block: 0;
+}
+
+.location{
+  font-size: 11px;
+  font-weight: 400;
+  color: #2B283A;
+  letter-spacing:2px;
+} 
+
+.location-info a{
+  font-size: 11px;
+  color: #918E9B;
+  font-weight: 400;
+}
+
+main h1{
+  font-size: 25px;
+  font-weight: 700;
+  margin-top: 0;
+  color: #2B283A;
+}
+
+.dates{
+  font-size: 11px;
+  color: #2B283A;
+  margin-top: 0;
+}
+
+.location-info{
+  font-size: 11px;
+  margin-top: 0;
+  line-height: 150%;
+  font-weight: 400;
+  color: #2B283A;
+}
+
+hr{
+  border: 0.9px solid #F5F5F5;
+  width: 478px;
+  margin-top: 15px;
+}
