@@ -1,32 +1,39 @@
-import { useState } from "react"
+import React from "react"
+import IngredientsList from "./IngredientsList"
+import ClaudeRecipe from "./ClaudeRecipe"
+import { getRecipeFromChefClaude } from "../ai"
 
-export default function Main (){
+export default function Main() {
 
-    const [ingredients, setIngredients] = useState([])
-
-    const ingredientsListItems = ingredients.map(ingredient => (
-        <li key={ingredient}>{ingredient}</li>
-    ))
+    const [ingredients, setIngredients] = React.useState([])
+    const [recipe, setRecipe] = React.useState(false)
     
-    function handleSubmit(event) {
-        event.preventDefault()
-        const formData = new FormData(event.currentTarget)
-        const newIngredient = formData.get("ingredient")
-        setIngredients(prevIngredients => [...prevIngredients, newIngredient])
-        console.log(newIngredient)
-        console.log(setIngredients)
+    async function getRecipe() {
+        const recipeMarkdown = await getRecipeFromChefClaude(ingredients)
+        setRecipe(recipeMarkdown)
     }
 
-    return(
-        <main>
-            <form onSubmit={handleSubmit} className="add-ingredient-form">
-                <input type="text" aria-label="Add Ingredients..." placeholder="e.g Oregano" name="ingredient"/>
-                <button> + Add Ingredients</button>
-            </form>
+    function addIngredient(formData) {
+        const newIngredient = formData.get("ingredient")
+        setIngredients(prevIngredients => [...prevIngredients, newIngredient])
+    }
 
-            <ul>
-                {ingredientsListItems}
-            </ul>
+    return (
+        <main>
+            <form action={addIngredient} className="add-ingredient-form">
+                <input
+                    type="text"
+                    placeholder="e.g. oregano"
+                    aria-label="Add ingredient"
+                    name="ingredient"
+                />
+                <button> + Add ingredient</button> 
+            </form>
+            {ingredients.length > 0 && <IngredientsList 
+                ingredients= {ingredients}
+                showRecipe={getRecipe}
+            />}
+            {recipe && <ClaudeRecipe recipe={recipe}/>}
         </main>
     )
 }
